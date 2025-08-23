@@ -1,0 +1,11 @@
+th{
+    font-size: 20px;
+}
+
+td{
+    font-size: 18px;
+}
+
+th, td{
+    padding: 10px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Centre Info</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .opening-hours {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tuition Centre Information</h1>
+    <label for="centre">Choose a tuition centre: </label>
+    <select id="centre" onchange="loadCentreInfo()">
+        <option value="">--Select--</option>
+    </select>
+
+    <div id="centre-info">
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            fetch('dataset.json')
+            .then(response => response.json())
+            .then(data => {
+                populateDropdown(data);
+            })
+            .catch(error => console.error('Error Loading JSON: ', error))
+        });
+
+        function populateDropdown(data){
+            const select = document.getElementById('centre');
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.title;
+                option.textContent = item.title;
+                select.appendChild(option)
+            });
+        }
+
+        function loadCentreInfo(){
+            const centreName = document.getElementById('centre').value;
+            if(!centreName){
+                document.getElementById('centre-info').innerHTML = '';
+                return;
+            }
+
+            fetch('dataset.json')
+                .then(response => response.json())
+                .then(data => {
+                    const centre = data.find(item => item.title === centreName);
+                    if(centre){
+                        displayTable(centre);
+                    } else{
+                        document.getElementById('centre-info').innerHTML = 'No data available';
+                    }
+                })
+                .catch(error => console.error('Error fetching data: ', error)
+            )
+        }
+
+        function displayTable(info) {
+            let tableHTML = '<table><tr><th>Title</th><th>Address</th><th>Phone</th><th>Website</th></tr>';
+            tableHTML += `<tr><td>${info.title}</td><td>${info.address}</td><td>${info.phone}</td><td><a href="${info.website}" target="_blank">${info.website}</a></td></tr>`;
+            tableHTML += '</table>';
+            document.getElementById('centre-info').innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>

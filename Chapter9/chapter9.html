@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form id="registration-form">
+
+        <label for="name">Name: </label><br>
+        <input id="name" type="text" placeholder="Enter your name"><br>
+
+        <label for="email">Email: </label><br>
+        <input id="email" type="email" placeholder="Enter your email"><br>
+        <span id="email-error" class="error"></span><br>
+
+        <label for="password">Password: </label><br>
+        <input id="password" type="password" placeholder="Enter your password"><br>
+
+        <label for="confirm-password">Confirm Password: </label><br>
+        <input id="confirm-password" type="password" placeholder="Confirm your password"><br>
+        <span id="password-error" class="error"></span><br>
+
+        <label for="age">Age: </label><br>
+        <input id="age" type="number" placeholder="Enter your age"><br>
+
+        <label for="terms">I agree to the terms and conditions: </label>
+        <input id="terms" type="checkbox"><br>
+        <span id="terms-error" class="error"></span><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+    <script src="chapter9.js"></script>
+</body>
+</html>

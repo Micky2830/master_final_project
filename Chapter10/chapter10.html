@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Storage Example</title>
+</head>
+<body>
+  <h1>Data Storage Example</h1>
+
+  <h2>Local Storage</h2>
+  <input type="text" id="localInput" placeholder="Enter a value">
+  <button onclick="storeLocalData()">Store in Local Storage</button>
+  <button onclick="retrieveLocalData()">Retrieve from Local Storage</button>
+  <button onclick="clearLocalStorage()">Clear Local Storage</button>
+  <p id="localOutput"></p>
+
+  <h2>Session Storage</h2>
+  <input type="text" id="sessionInput" placeholder="Enter a value">
+  <button onclick="storeSessionData()">Store in Session Storage</button>
+  <button onclick="retrieveSessionData()">Retrieve from Session Storage</button>
+  <button onclick="clearSessionStorage()">Clear Session Storage</button>
+  <p id="sessionOutput"></p>
+
+  <script src="chapter10.js"></script>
+</body>
+</html>
